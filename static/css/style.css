@@ -124,7 +124,11 @@ ul{
 }
 
 .btn-primary:hover{
-    transform:translateY(-4px);
+
+transform:translateY(-4px);
+
+box-shadow:0 15px 35px rgba(37,99,235,.35);
+
 }
 
 .btn-secondary{
@@ -137,8 +141,13 @@ ul{
 }
 
 .btn-secondary:hover{
-    background:#2563eb;
-    color:white;
+
+background:#2563eb;
+
+color:white;
+
+box-shadow:0 15px 35px rgba(37,99,235,.25);
+
 }
 
 /* ==========================
@@ -261,8 +270,11 @@ ul{
 }
 
 .service-card:hover{
-    transform:translateY(-12px);
-    box-shadow:0 25px 50px rgba(37,99,235,.12);
+
+transform:translateY(-12px) scale(1.02);
+
+box-shadow:0 25px 60px rgba(37,99,235,.18);
+
 }
 
 .service-icon{
@@ -340,16 +352,24 @@ margin-top:70px;
 .project-card{
 
 background:white;
+
 border-radius:25px;
+
 overflow:hidden;
+
 box-shadow:0 12px 30px rgba(0,0,0,.08);
-transition:.4s;
+
+transition:.45s;
+
+cursor:pointer;
 
 }
 
 .project-card:hover{
 
-transform:translateY(-10px);
+transform:translateY(-14px);
+
+box-shadow:0 30px 70px rgba(37,99,235,.20);
 
 }
 
@@ -738,5 +758,387 @@ background:#2563eb;
 z-index:99999;
 
 transition:width .1s linear;
+
+}
+
+/*=========================
+      WHATSAPP BUTTON
+=========================*/
+
+.whatsapp-btn{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+width:65px;
+
+height:65px;
+
+border-radius:50%;
+
+background:#25D366;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:32px;
+
+color:white;
+
+box-shadow:0 15px 35px rgba(0,0,0,.25);
+
+text-decoration:none;
+
+z-index:9999;
+
+animation:pulse 2s infinite;
+
+transition:.3s;
+
+}
+
+.whatsapp-btn:hover{
+
+transform:scale(1.12);
+
+}
+
+@keyframes pulse{
+
+0%{
+
+box-shadow:0 0 0 0 rgba(37,211,102,.6);
+
+}
+
+70%{
+
+box-shadow:0 0 0 18px rgba(37,211,102,0);
+
+}
+
+100%{
+
+box-shadow:0 0 0 0 rgba(37,211,102,0);
+
+}
+
+}
+
+.navbar.scrolled{
+
+box-shadow:0 12px 35px rgba(0,0,0,.08);
+
+background:rgba(255,255,255,.96);
+
+}
+
+::-webkit-scrollbar{
+
+width:10px;
+
+}
+
+::-webkit-scrollbar-track{
+
+background:#f4f4f4;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+background:#2563eb;
+
+border-radius:50px;
+
+}
+
+::-webkit-scrollbar-thumb:hover{
+
+background:#1d4ed8;
+
+}
+
+/* BACK TO TOP */
+
+#topBtn{
+
+position:fixed;
+
+right:25px;
+
+bottom:105px;
+
+width:55px;
+
+height:55px;
+
+border:none;
+
+border-radius:50%;
+
+background:#2563eb;
+
+color:white;
+
+font-size:24px;
+
+cursor:pointer;
+
+display:none;
+
+box-shadow:0 15px 35px rgba(0,0,0,.2);
+
+transition:.3s;
+
+z-index:9998;
+
+}
+
+#topBtn:hover{
+
+transform:translateY(-5px);
+
+background:#1d4ed8;
+
+}
+
+/* FLOATING LAPTOP */
+
+.laptop-card{
+
+animation:float 5s ease-in-out infinite;
+
+}
+
+@keyframes float{
+
+0%{
+
+transform:translateY(0px);
+
+}
+
+50%{
+
+transform:translateY(-15px);
+
+}
+
+100%{
+
+transform:translateY(0px);
+
+}
+
+}
+
+.contact-right button{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.contact-right button:hover{
+
+transform:translateY(-3px);
+
+box-shadow:0 18px 35px rgba(37,99,235,.35);
+
+}
+
+.nav-links a.active{
+
+color:#2563eb;
+
+font-weight:700;
+
+position:relative;
+
+}
+
+.nav-links a.active::after{
+
+content:"";
+
+position:absolute;
+
+left:0;
+
+bottom:-6px;
+
+width:100%;
+
+height:3px;
+
+background:#2563eb;
+
+border-radius:20px;
+
+}
+
+.project-image{
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.project-overlay{
+
+position:absolute;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(17,24,39,.45);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+opacity:0;
+
+transition:.4s;
+
+}
+
+.project-card:hover .project-overlay{
+
+opacity:1;
+
+}
+
+.view-btn{
+
+background:white;
+
+color:#2563eb;
+
+padding:14px 28px;
+
+border-radius:12px;
+
+font-weight:700;
+
+transition:.3s;
+
+}
+
+.view-btn:hover{
+
+transform:scale(1.08);
+
+}
+
+/*=========================
+        LOADER
+=========================*/
+
+#loader{
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100vh;
+
+background:white;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+z-index:999999;
+
+transition:opacity .6s ease;
+
+}
+
+.loader-logo{
+
+font-size:42px;
+
+font-weight:800;
+
+color:#2563eb;
+
+letter-spacing:1px;
+
+animation:loaderPulse 1.2s infinite;
+
+}
+
+@keyframes loaderPulse{
+
+0%{
+
+transform:scale(1);
+
+opacity:.6;
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+opacity:1;
+
+}
+
+100%{
+
+transform:scale(1);
+
+opacity:.6;
+
+}
+
+}
+
+.success-message{
+
+background:#dcfce7;
+
+color:#166534;
+
+padding:15px;
+
+border-radius:12px;
+
+margin-bottom:20px;
+
+font-weight:600;
+
+}
+
+.contact-right button:disabled{
+
+background:#94a3b8;
+
+cursor:not-allowed;
 
 }

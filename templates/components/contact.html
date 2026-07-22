@@ -23,24 +23,31 @@
 
             <div class="contact-right">
 
-                <form>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            <div class="success-message">
+                {{ messages[0] }}
+            </div>
+            {% endif %}
+            {% endwith %}
 
-                    <input type="text"
-                    placeholder="Your Name">
+                <form action="/contact" method="POST">
 
-                    <input type="email"
-                    placeholder="Email Address">
+                    <input type="text" name="name" placeholder="Your Name" required>
 
-                    <input type="text"
-                    placeholder="Project Type">
+                    <input
+                    type="email"
+                    name="email"
+                    placeholder="Email Address"
+                    required
+                    autocomplete="email">
 
-                    <textarea
-                    placeholder="Tell us about your project"></textarea>
+                    <input type="text" name="project" placeholder="Project Type" required>
 
-                    <button>
+                    <textarea name="message" placeholder="Tell us about your project" required></textarea>
 
-                        Send Message
-
+                    <button type="submit">
+                    🚀 Send Project Request
                     </button>
 
                 </form>

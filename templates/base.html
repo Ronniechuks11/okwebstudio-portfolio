@@ -2,9 +2,18 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>{% block title %}OKWebStudio{% endblock %}</title>
+    <meta name="description" content="OKWebStudio creates modern, fast and responsive websites for businesses, schools and brands that want to grow online.">
+
+    <meta name="keywords" content="Web Developer, Flask, Website Design, Nigeria, OKWebStudio">
+
+    <meta name="author" content="OKWebStudio">
+
+    <meta name="theme-color" content="#2563eb">
+
+    <title>{% block title %}OKWebStudio | Modern Web Development{% endblock %}</title>
 
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,13 +23,46 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 </head>
 
 <body>
+<div id="loader">
+
+    <div class="loader-logo">
+
+        OKWebStudio
+
+    </div>
+
+</div>
 
 <div id="progress-bar"></div>
 
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+
+<div class="flash-message">
+
+{{ messages[0] }}
+
+</div>
+
+{% endif %}
+{% endwith %}
+
 {% block content %}{% endblock %}
+
+<a href="https://wa.me/2349039859350"
+   class="whatsapp-btn"
+   target="_blank"
+   aria-label="Chat with us on WhatsApp">
+
+    💬
+
+</a>
+
+<button id="topBtn">↑</button>
 
 <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
