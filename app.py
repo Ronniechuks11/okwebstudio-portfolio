@@ -60,7 +60,7 @@ def contact():
     Sent from OKWebStudio Portfolio
     """
 
-    # mail.send(msg)
+    mail.send(msg)
 
     flash("🎉 Thank you! We've received your message and will get back to you within 24 hours.")
 
