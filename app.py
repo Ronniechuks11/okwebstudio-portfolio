@@ -64,7 +64,7 @@ def contact():
 
     flash("🎉 Thank you! We've received your message and will get back to you within 24 hours.")
 
-    return redirect("/")
+    return redirect("/#contact")
 
 @app.errorhandler(404)
 def page_not_found(e):
