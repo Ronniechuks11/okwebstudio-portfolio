@@ -15,120 +15,239 @@
 
         </div>
 
+
         <div class="projects-grid">
 
-            <div class="project-card">
 
-    <div class="project-image">
-
-        <img src="{{ url_for('static', filename='images/projects/project1.jpg') }}" alt="BrightHeaven International School Portal">
-
-        <div class="project-overlay">
-
-            <a href="https://brightheavenschoolportal.pythonanywhere.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="view-btn">
-                View Project
-            </a>
-
-        </div>
-
-    </div>
-
-    <div class="project-content">
-
-        <span>School Portal</span>
-
-        <h3>BrightHeaven International School</h3>
-
-    </div>
-
-</div>
+            <!-- =========================
+                 BRIGHTHEAVEN
+            ========================== -->
 
             <div class="project-card">
 
-    <div class="project-image">
+                <div class="project-image">
 
-        <img src="{{ url_for('static', filename='images/projects/project2.jpg') }}" alt="Project">
+                    <img src="{{ url_for('static', filename='images/projects/project1.jpg') }}"
+                         alt="BrightHeaven International School Portal">
 
-        <div class="project-overlay">
+                    <div class="project-overlay">
 
-            <a href="https://globe-care.onrender.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="view-btn">
-                View Project
-            </a>
+                        <button class="view-btn"
+                                onclick="openBrightheaven()">
+                            View Project
+                        </button>
 
-        </div>
+                    </div>
 
-    </div>
+                </div>
 
-    <div class="project-content">
+                <div class="project-content">
 
-        <span>Security Website</span>
+                    <span>School Portal</span>
 
-        <h3>Globe-Care Services Ltd</h3>
+                    <h3>BrightHeaven International School</h3>
 
-    </div>
+                    <p>
+                        A modern school management and student portal
+                        designed for administrators, staff and students.
+                    </p>
 
-</div>
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 BRIGHTHEAVEN MODAL
+            ========================== -->
+
+            <div id="brightheavenModal" class="project-modal">
+
+                <div class="project-modal-content">
+
+                    <button class="modal-close"
+                            onclick="closeBrightheaven()">
+                        &times;
+                    </button>
+
+                    <span class="modal-label">
+                        BRIGHTHEAVEN PORTAL
+                    </span>
+
+                    <h2>Explore the Project</h2>
+
+                    <p>
+                        Choose which version of the BrightHeaven
+                        portal you want to explore.
+                    </p>
+
+                    <div class="modal-buttons">
+
+                        <a href="https://brightheavenschoolportal.pythonanywhere.com/admin/dashboard"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="modal-btn admin-btn">
+                            👨‍💼 Admin's View
+                        </a>
+
+                        <a href="https://brightheavenschoolportal.pythonanywhere.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="modal-btn portal-btn">
+                            🌐 Visit Portal
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 GLOBE-CARE
+            ========================== -->
 
             <div class="project-card">
 
-    <div class="project-image">
+                <div class="project-image">
 
-        <img src="{{ url_for('static', filename='images/projects/project3.jpg') }}" alt="Project">
+                    <img src="{{ url_for('static', filename='images/projects/project2.jpg') }}"
+                         alt="Globe-Care Services Ltd Website">
 
-        <div class="project-overlay">
+                    <div class="project-overlay">
 
-            <a href="#" class="view-btn">View Project</a>
+                        <a href="https://globe-care.onrender.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="view-btn">
+                            View Project
+                        </a>
 
-        </div>
+                    </div>
 
-    </div>
+                </div>
 
-    <div class="project-content">
+                <div class="project-content">
 
-        <span>Portfolio Websites</span>
+                    <span>Security Website</span>
 
-        <h3>Creative Portfolio</h3>
+                    <h3>Globe-Care Services Ltd</h3>
 
-    </div>
+                </div>
 
-</div>
+            </div>
+
+
+
+            <!-- =========================
+                 CREATIVE PORTFOLIO
+            ========================== -->
 
             <div class="project-card">
 
-    <div class="project-image">
+                <div class="project-image">
 
-        <img src="{{ url_for('static', filename='images/projects/project4.jpg') }}" alt="Project">
+                    <img src="{{ url_for('static', filename='images/projects/project3.jpg') }}"
+                         alt="Creative Portfolio Website">
 
-        <div class="project-overlay">
+                    <div class="project-overlay">
 
-            <a href="https://D0NBrandsboutique.pythonanywhere.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="view-btn">
-                View Project
-            </a>
+                        <a href="#"
+                           class="view-btn">
+                            View Project
+                        </a>
 
-        </div>
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <span>Portfolio Websites</span>
+
+                    <h3>Creative Portfolio</h3>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 DONBRANDS
+            ========================== -->
+
+            <div class="project-card">
+
+                <div class="project-image">
+
+                    <img src="{{ url_for('static', filename='images/projects/project4.jpg') }}"
+                         alt="DonBrands Boutique Fashion Store">
+
+                    <div class="project-overlay">
+
+                        <a href="https://D0NBrandsboutique.pythonanywhere.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="view-btn">
+                            View Project
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <span>Fashion Store</span>
+
+                    <h3>DonBrands Boutique</h3>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 VELORA GRAND HOTEL
+            ========================== -->
+
+            <div class="project-card">
+
+                <div class="project-image">
+
+                    <img src="{{ url_for('static', filename='images/projects/p.jpg') }}"
+                         alt="Velora Grands Hotel Website">
+
+                    <div class="project-overlay">
+
+                        <a href="https://jnjnn.com/"
+                           target="_blank"
+                           rel="noopener noreferrer"
+                           class="view-btn">
+                            View Project
+                        </a>
+
+                    </div>
+
+                </div>
+
+                <div class="project-content">
+
+                    <span>Hotel Websites</span>
+
+                    <h3>Velora Grands Hotel</h3>
+
+                </div>
+
+            </div>
 
 
         </div>
 
     </div>
-
-    <div class="project-content">
-
-        <span>DonBrands Boutique</span>
-
-        <h3>Fashion Store</h3>
-
-    </div>
-
-</div>
 
 </section>

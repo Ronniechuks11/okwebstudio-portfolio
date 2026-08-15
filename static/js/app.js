@@ -2,10 +2,27 @@
 const menuBtn = document.getElementById("menuBtn");
 const navLinks = document.getElementById("navLinks");
 
-if(menuBtn){
-    menuBtn.onclick = () => {
+if (menuBtn && navLinks) {
+
+    menuBtn.addEventListener("click", () => {
+
         navLinks.classList.toggle("active");
-    };
+        menuBtn.classList.toggle("open");
+
+    });
+
+    // Close menu when a link is clicked
+    navLinks.querySelectorAll("a").forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            navLinks.classList.remove("active");
+            menuBtn.classList.remove("open");
+
+        });
+
+    });
+
 }
 
 // Scroll Reveal
@@ -203,3 +220,29 @@ btn.disabled = true;
 });
 
 }
+
+function openBrightheaven() {
+    document.getElementById("brightheavenModal").classList.add("active");
+}
+
+function closeBrightheaven() {
+    document.getElementById("brightheavenModal").classList.remove("active");
+}
+
+// Offer Popup
+const offerPopup = document.getElementById("offerPopup");
+const offerClose = document.getElementById("offerClose");
+
+setTimeout(() => {
+    offerPopup.classList.add("show");
+}, 3000);
+
+offerClose.addEventListener("click", () => {
+    offerPopup.classList.remove("show");
+});
+
+offerPopup.addEventListener("click", (e) => {
+    if (e.target === offerPopup) {
+        offerPopup.classList.remove("show");
+    }
+});
