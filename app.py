@@ -80,9 +80,18 @@ def sitemap():
     </url>
 </urlset>""", 200, {"Content-Type": "application/xml"}
 
+@app.route("/robots.txt")
+def robots():
+    return """User-agent: *
+Allow: /
+
+Sitemap: https://okwebstudi0.pythonanywhere.com/sitemap.xml
+""", 200, {"Content-Type": "text/plain"}
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404
+
 
 if __name__ == "__main__":
     app.run(debug=True)

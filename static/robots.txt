@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://OKWebStudi0.pythonanywhere.com/sitemap.xml
+Sitemap: https://okwebstudi0.pythonanywhere.com/sitemap.xmls

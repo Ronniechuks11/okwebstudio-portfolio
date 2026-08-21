@@ -7,26 +7,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <meta name="description"
-          content="OKWebStudio creates modern, fast and responsive websites and web applications for businesses, schools and brands that want to grow online.">
-
-    <meta name="keywords"
-          content="OKWebStudio, web developer, website design, web development, Flask developer, Nigeria">
+      content="OKWebStudio designs and develops modern, fast and responsive websites for businesses, brands and organizations in Nigeria. Build a professional online presence with us.">
 
     <meta name="author" content="OKWebStudio">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="OKWebStudio | Web Design & Development in Nigeria">
+    <meta property="og:description" content="Modern, fast and responsive websites for businesses, brands and organizations in Nigeria.">
+    <meta property="og:url" content="https://okwebstudi0.pythonanywhere.com/">
+    <meta property="og:site_name" content="OKWebStudio">
 
     <meta name="robots" content="index, follow">
 
     <meta name="theme-color" content="#2563eb">
-
+    
     <title>
-        {% block title %}OKWebStudio | Modern Web Development{% endblock %}
+        {% block title %}OKWebStudio | Web Design & Development in Nigeria{% endblock %}
     </title>
     
+    <link rel="canonical" href="https://okwebstudi0.pythonanywhere.com/">
+
     <!-- Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-
+    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animations.css') }}">
