@@ -66,6 +66,15 @@ def contact():
 
     return redirect("/#contact")
 
+@app.route("/sitemap.xml")
+def sitemap():
+    return """<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://YOUR-USERNAME.pythonanywhere.com/</loc>
+    </url>
+</urlset>""", 200, {"Content-Type": "application/xml"}
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template("404.html"), 404

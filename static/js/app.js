@@ -235,7 +235,7 @@ const offerClose = document.getElementById("offerClose");
 
 setTimeout(() => {
     offerPopup.classList.add("show");
-}, 3000);
+}, 10000);
 
 offerClose.addEventListener("click", () => {
     offerPopup.classList.remove("show");
