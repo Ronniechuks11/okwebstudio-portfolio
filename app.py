@@ -76,7 +76,7 @@ def sitemap():
     return """<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-        <loc>https://YOUR-USERNAME.pythonanywhere.com/</loc>
+        <loc>https://okwebstudi0.pythonanywhere.com/</loc>
     </url>
 </urlset>""", 200, {"Content-Type": "application/xml"}
 
