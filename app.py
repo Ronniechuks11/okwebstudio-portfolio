@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, flash, redirect
 from flask_mail import Mail, Message
 import os
+from flask import send_from_directory
 
 app = Flask(__name__)
 
@@ -15,6 +16,10 @@ app.config["MAIL_PASSWORD"] = "wuajcwijqgckkhqb"
 app.config["MAIL_DEFAULT_SENDER"] = "okzwebstudio@gmail.com"
 
 mail = Mail(app)
+
+@app.route('/googlee3424370c0985eb2.html')
+def google_verification():
+    return send_from_directory('.', 'googlee3424370c0985eb2.html')
 
 @app.route("/")
 def home():
