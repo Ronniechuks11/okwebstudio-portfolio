@@ -4,24 +4,18 @@
 
         <div class="hero-left">
 
-            <span class="hero-badge">
-
-                ✨ Trusted by Businesses Across Nigeria
-
-            </span>
+            <span class="eyebrow">Nigerian web studio</span>
 
             <h1>
-                Modern Websites That Grow
-                Your business.
+                Modern websites that grow your
+                <span class="typed-wrap"></span>
             </h1>
 
             <p>
-
-                OKWebStudio is a Nigerian web 
-                development studio creating modern 
+                OKWebStudio is a Nigerian web
+                development studio creating modern
                 websites and web applications for
                 businesses, schools, and brands.
-
             </p>
 
             <div class="hero-buttons">
@@ -42,7 +36,17 @@
 
             <div class="laptop-card">
 
-                <img src="{{ url_for('static', filename='images/hero/laptop.png') }}" alt="Laptop">
+                <div class="browser-bar">
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                    <span class="browser-dot"></span>
+                    <span class="browser-url">okwebstudio.dev</span>
+                </div>
+
+                <div style="position:relative; overflow:hidden;">
+                    <img src="{{ url_for('static', filename='images/hero/laptop.png') }}" alt="OKWebStudio project preview">
+                    <div class="scan-line"></div>
+                </div>
 
             </div>
 
@@ -57,7 +61,6 @@
             <div class="floating-card bottom">
 
                 <h3 class="counter" data-target="30">0</h3>
-
                 <small>Projects Completed</small>
 
             </div>
@@ -67,3 +70,10 @@
     </div>
 
 </section>
+
+<div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+        <span><i>◆</i> Business Websites <i>◆</i> School Portals <i>◆</i> E-Commerce <i>◆</i> Custom Web Apps <i>◆</i> Booking Systems <i>◆</i> Landing Pages</span>
+        <span><i>◆</i> Business Websites <i>◆</i> School Portals <i>◆</i> E-Commerce <i>◆</i> Custom Web Apps <i>◆</i> Booking Systems <i>◆</i> Landing Pages</span>
+    </div>
+</div>

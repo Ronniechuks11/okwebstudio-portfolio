@@ -6,7 +6,7 @@
 
             <div class="contact-left">
 
-                <span>LET'S TALK</span>
+                <span class="eyebrow">Let's Talk</span>
 
                 <h2>
                     Ready To Build Your
@@ -22,31 +22,39 @@
 
             <div class="contact-right">
 
-            {% with messages = get_flashed_messages() %}
-            {% if messages %}
-            <div class="success-message">
-                {{ messages[0] }}
-            </div>
-            {% endif %}
-            {% endwith %}
+                <div id="successMessage"
+                     class="success-message"
+                     style="display: none;">
+                </div>
 
-                <form action="/contact" method="POST">
-
-                    <input type="text" name="name" placeholder="Your Name" required>
+                <form id="contactForm" action="/contact" method="POST">
 
                     <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    required
-                    autocomplete="email">
+                        type="text"
+                        name="name"
+                        placeholder="Your Name"
+                        required>
 
-                    <input type="text" name="project" placeholder="Project Type" required>
+                    <input
+                        type="email"
+                        name="email"
+                        placeholder="Email Address"
+                        required
+                        autocomplete="email">
 
-                    <textarea name="message" placeholder="Tell us about your project" required></textarea>
+                    <input
+                        type="text"
+                        name="project"
+                        placeholder="Project Type"
+                        required>
 
-                    <button type="submit">
-                    🚀 Send Project Request
+                    <textarea
+                        name="message"
+                        placeholder="Tell us about your project"
+                        required></textarea>
+
+                    <button type="submit" id="submitBtn">
+                        🚀 Send Project Request
                     </button>
 
                 </form>

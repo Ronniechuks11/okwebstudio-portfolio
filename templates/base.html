@@ -19,7 +19,7 @@
 
     <meta name="robots" content="index, follow">
 
-    <meta name="theme-color" content="#2563eb">
+    <meta name="theme-color" content="#0a0d10">
     
     <title>
         {% block title %}OKWebStudio | Web Design & Development in Nigeria{% endblock %}
@@ -27,10 +27,10 @@
     
     <link rel="canonical" href="https://okwebstudi0.pythonanywhere.com/">
 
-    <!-- Google Font -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/responsive.css') }}">
@@ -78,7 +78,11 @@
 
     <div class="loader-logo">
 
-        OKWebStudio
+        <span class="loader-line">$ initializing okwebstudio_</span>
+        <span class="loader-line">$ compiling design system...</span>
+        <span class="loader-line">$ ready.</span>
+
+        <div class="loader-bar"><span></span></div>
 
     </div>
 
