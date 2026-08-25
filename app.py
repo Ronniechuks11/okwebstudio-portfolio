@@ -7,16 +7,16 @@ load_dotenv()
 
 app = Flask(__name__)
 
-app.secret_key = os.getenv("SECRET_KEY", "okzwebstudio")
+app.secret_key = os.getenv("SECRET_KEY", "dev-only-change-me")
 
 app.config["MAIL_SERVER"] = "smtp.gmail.com"
 app.config["MAIL_PORT"] = 587
 app.config["MAIL_USE_TLS"] = True
 app.config["MAIL_USE_SSL"] = False
 
-app.config["MAIL_USERNAME"] = "okzwebstudio@gmail.com"
-app.config["MAIL_PASSWORD"] = "wuajcwijqgckkhqb"
-app.config["MAIL_DEFAULT_SENDER"] = "okzwebstudio@gmail.com"
+app.config["MAIL_USERNAME"] = os.getenv("MAIL_USERNAME")
+app.config["MAIL_PASSWORD"] = os.getenv("MAIL_PASSWORD")
+app.config["MAIL_DEFAULT_SENDER"] = os.getenv("MAIL_USERNAME")
 
 mail = Mail(app)
 
