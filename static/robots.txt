@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://okwebstudi0.pythonanywhere.com/sitemap.xmls

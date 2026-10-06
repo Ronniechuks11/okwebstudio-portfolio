@@ -1,0 +1,147 @@
+{% extends "admin/base.html" %}
+
+{% set current_link_mode = project.link_mode if project else 'none' %}
+{% set current_icon = (project.placeholder_icon if project and project.placeholder_icon else '🖥️') %}
+{% set current_image = project.image_filename if project else none %}
+
+{% block title %}{{ 'Edit Project' if mode == 'edit' else 'Add Project' }} | OKWebStudio Admin{% endblock %}
+
+{% block content %}
+
+<div class="admin-page-header">
+    <div>
+        <span class="admin-eyebrow">Featured Projects</span>
+        <h1>{{ 'Edit Project' if mode == 'edit' else 'Add New Project' }}</h1>
+        <p>This card will appear in Featured Projects and on the View All Projects page.</p>
+    </div>
+    <a href="{{ url_for('admin.projects_list') }}" class="admin-btn admin-btn-outline">← Back to List</a>
+</div>
+
+<div class="admin-panel">
+
+    <form class="admin-form" method="POST" enctype="multipart/form-data">
+
+        <div class="form-group">
+            <label class="form-label" for="title">Project Title</label>
+            <input class="admin-input" type="text" id="title" name="title" required
+                   placeholder="e.g. BrightHeaven International School"
+                   value="{{ project.title if project else '' }}">
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="category">Category Tag</label>
+            <input class="admin-input" type="text" id="category" name="category" required
+                   placeholder="e.g. School Portal"
+                   value="{{ project.category if project else '' }}">
+            <span class="form-hint">The small label shown above the project title.</span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="description">Description</label>
+            <textarea class="admin-textarea" id="description" name="description" required
+                      placeholder="A short description of the project.">{{ project.description if project else '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Project Image</label>
+            <div class="image-upload">
+                <div class="image-preview" id="imagePreview">
+                    {% if current_image %}
+                    <img src="{{ url_for('static', filename='images/projects/' + current_image) }}" alt="Current image">
+                    {% else %}
+                    <span>{{ current_icon }}</span>
+                    {% endif %}
+                </div>
+                <label class="file-input-label">
+                    📤 Choose Image
+                    <input type="file" id="imageInput" name="image" accept=".png,.jpg,.jpeg,.webp,.gif">
+                </label>
+            </div>
+            <span class="form-hint">Landscape photos work best (16:10). PNG, JPG, WEBP or GIF, up to 8MB.</span>
+
+            {% if current_image %}
+            <label class="checkbox-row">
+                <input type="checkbox" id="removeImageCheckbox" name="remove_image">
+                Remove current image (show the placeholder icon below instead)
+            </label>
+            {% endif %}
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="placeholder_icon">Placeholder Icon</label>
+            <input class="admin-input" type="text" id="placeholder_icon" name="placeholder_icon"
+                   maxlength="8" style="max-width:120px;"
+                   value="{{ current_icon }}">
+            <span class="form-hint">Shown instead of a photo when no image is uploaded (e.g. 🎨 🏨 🍽️).</span>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Project Links</label>
+            <span class="form-hint">Choose what visitors see when they click this project.</span>
+
+            <div class="segmented-control">
+                <input class="segmented-input" type="radio" name="link_mode" id="lm_none" value="none"
+                       {{ 'checked' if current_link_mode == 'none' }}>
+                <label class="segmented-option" for="lm_none">Coming Soon (no link)</label>
+
+                <input class="segmented-input" type="radio" name="link_mode" id="lm_single" value="single"
+                       {{ 'checked' if current_link_mode == 'single' }}>
+                <label class="segmented-option" for="lm_single">Single Link — "View Project"</label>
+
+                <input class="segmented-input" type="radio" name="link_mode" id="lm_dual" value="dual"
+                       {{ 'checked' if current_link_mode == 'dual' }}>
+                <label class="segmented-option" for="lm_dual">Two Links — Admin View + Visit Site</label>
+            </div>
+
+            <div class="conditional-fields {{ '' if current_link_mode == 'single' else 'is-hidden' }}" data-link-fields="single">
+                <div class="form-group">
+                    <label class="form-label" for="project_url">Project Link</label>
+                    <input class="admin-input" type="text" id="project_url" name="project_url"
+                           placeholder="https://example.com"
+                           value="{{ project.project_url if project and project.project_url else '' }}">
+                </div>
+            </div>
+
+            <div class="conditional-fields {{ '' if current_link_mode == 'dual' else 'is-hidden' }}" data-link-fields="dual">
+                <div class="form-group">
+                    <label class="form-label" for="admin_url">Admin's View Link</label>
+                    <input class="admin-input" type="text" id="admin_url" name="admin_url"
+                           placeholder="https://example.com/admin/dashboard"
+                           value="{{ project.admin_url if project and project.admin_url else '' }}">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="visit_url">Visit Site Link</label>
+                    <input class="admin-input" type="text" id="visit_url" name="visit_url"
+                           placeholder="https://example.com"
+                           value="{{ project.visit_url if project and project.visit_url else '' }}">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Show on Homepage</label>
+            <div class="toggle-row">
+                <label class="toggle-switch">
+                    <input type="checkbox" name="featured"
+                           {{ 'checked' if (project.featured if project else true) }}>
+                    <span class="toggle-slider"></span>
+                </label>
+                <span class="form-hint">
+                    When on, this project can appear in the homepage's Featured Projects
+                    (the first 4 marked "Featured" are shown there).
+                </span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="admin-btn admin-btn-primary">
+                {{ 'Save Changes' if mode == 'edit' else '+ Add Project' }}
+            </button>
+            <a href="{{ url_for('admin.projects_list') }}" class="admin-btn admin-btn-outline">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

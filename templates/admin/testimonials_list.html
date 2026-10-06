@@ -1,0 +1,62 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Testimonials | OKWebStudio Admin{% endblock %}
+
+{% block content %}
+
+<div class="admin-page-header">
+    <div>
+        <span class="admin-eyebrow">Manage</span>
+        <h1>Testimonials</h1>
+        <p>These appear in the "What Our Clients Say" section on the homepage.</p>
+    </div>
+    <a href="{{ url_for('admin.testimonial_new') }}" class="admin-btn admin-btn-primary">+ Add Testimonial</a>
+</div>
+
+<div class="admin-panel">
+
+    {% if testimonials %}
+        {% for testimonial in testimonials %}
+        <div class="data-row">
+
+            <div class="data-row-media">💬</div>
+
+            <div class="data-row-info">
+                <h4>{{ testimonial.client_name }}</h4>
+                <p>"{{ testimonial.quote }}"</p>
+                <div class="data-row-meta">{{ testimonial.client_role }}</div>
+            </div>
+
+            <div class="data-row-badges">
+                <span class="badge badge-stars">{{ '★' * testimonial.rating }}</span>
+            </div>
+
+            <div class="data-row-order">
+                <form class="inline-form" method="POST" action="{{ url_for('admin.testimonial_move', testimonial_id=testimonial.id, direction='up') }}">
+                    <button type="submit" class="icon-btn" title="Move up" aria-label="Move up">↑</button>
+                </form>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.testimonial_move', testimonial_id=testimonial.id, direction='down') }}">
+                    <button type="submit" class="icon-btn" title="Move down" aria-label="Move down">↓</button>
+                </form>
+            </div>
+
+            <div class="data-row-actions">
+                <a href="{{ url_for('admin.testimonial_edit', testimonial_id=testimonial.id) }}" class="admin-btn admin-btn-outline admin-btn-sm">Edit</a>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.testimonial_delete', testimonial_id=testimonial.id) }}"
+                      data-confirm="Delete this testimonial from {{ testimonial.client_name }}?">
+                    <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm">Delete</button>
+                </form>
+            </div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">💬</div>
+            No testimonials yet. Add your first one to get started.
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<section class="testimonials reveal" id="testimonials">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="eyebrow">Testimonials</span>
+
+            <h2>What Our Clients Say</h2>
+
+            <p>
+                See what our clients say about working with OKWebStudio and 
+                the websites we've built for their businesses and organizations.
+            </p>
+
+        </div>
+
+        <div class="testimonial-grid">
+
+            {% for testimonial in testimonials %}
+            <div class="testimonial-card">
+
+                <div class="stars">{{ '★' * testimonial.rating }}</div>
+
+                <p>
+                    "{{ testimonial.quote }}"
+                </p>
+
+                <div class="client">
+
+                    <h4>{{ testimonial.client_name }}</h4>
+
+                    {% if testimonial.client_role %}
+                    <small>{{ testimonial.client_role }}</small>
+                    {% endif %}
+
+                </div>
+
+            </div>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</section>

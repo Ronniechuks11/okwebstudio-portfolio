@@ -1,0 +1,47 @@
+<!-- =========================
+     Shared project links modal — filled in by JS (openProjectModal)
+     whenever a project with two links (admin view + live site) is clicked.
+========================== -->
+
+<div id="projectLinksModal" class="project-modal">
+
+    <div class="project-modal-content">
+
+        <button class="modal-close"
+                onclick="closeProjectModal()">
+            &times;
+        </button>
+
+        <span class="modal-label">
+            PROJECT LINKS
+        </span>
+
+        <h2>Explore the Project</h2>
+
+        <p>
+            Choose which version of the project you want to explore.
+        </p>
+
+        <div class="modal-buttons">
+
+            <a id="modalAdminLink"
+               href="#"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="modal-btn admin-btn">
+                👨‍💼 Admin's View
+            </a>
+
+            <a id="modalVisitLink"
+               href="#"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="modal-btn portal-btn">
+                🌐 Visit Site
+            </a>
+
+        </div>
+
+    </div>
+
+</div>

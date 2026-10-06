@@ -1,0 +1,41 @@
+{% import "components/_project_card.html" as cards %}
+
+<section class="projects reveal" id="projects">
+
+    <div class="container">
+
+        <div class="section-title">
+
+            <span class="eyebrow">Featured Projects</span>
+
+            <h2>Websites &amp; Web Applications We've built</h2>
+
+            <p>
+                Every Web project is crafted with attention to detail,
+                performance and user experience.
+            </p>
+
+        </div>
+
+
+        <div class="projects-grid">
+
+            {% for project in featured_projects %}
+                {{ cards.render_project_card(project) }}
+            {% endfor %}
+
+        </div>
+
+        {% if show_view_all %}
+        <div class="projects-viewall">
+            <a href="{{ url_for('all_projects') }}" class="btn-secondary">
+                View All Projects →
+            </a>
+        </div>
+        {% endif %}
+
+    </div>
+
+</section>
+
+{% include "components/project_modal.html" %}

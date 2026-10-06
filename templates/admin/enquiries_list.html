@@ -1,0 +1,65 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Enquiries | OKWebStudio Admin{% endblock %}
+
+{% block content %}
+
+<div class="admin-page-header">
+    <div>
+        <span class="admin-eyebrow">Inbox</span>
+        <h1>Website Enquiries</h1>
+        <p>Messages sent from the contact form on your site — no more digging through email.</p>
+    </div>
+</div>
+
+<div class="admin-panel">
+
+    {% if enquiries %}
+        {% for enquiry in enquiries %}
+        <div class="data-row {{ 'is-unread' if not enquiry.is_read else '' }}">
+
+            <div class="data-row-media">📩</div>
+
+            <div class="data-row-info">
+                <h4>{{ enquiry.name }} — {{ enquiry.project_type or "General Enquiry" }}</h4>
+                <p>{{ enquiry.email }}</p>
+                <div class="data-row-meta">{{ enquiry.created_at[:16].replace('T', ' ') }} UTC</div>
+            </div>
+
+            <div class="data-row-badges">
+                {% if not enquiry.is_read %}
+                    <span class="badge badge-warning">Unread</span>
+                {% else %}
+                    <span class="badge badge-muted">Read</span>
+                {% endif %}
+            </div>
+
+            <div class="data-row-actions">
+                <button type="button" class="admin-btn admin-btn-outline admin-btn-sm" data-toggle-message="msg-{{ enquiry.id }}">
+                    Read message ▾
+                </button>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.enquiry_toggle_read', enquiry_id=enquiry.id) }}">
+                    <button type="submit" class="admin-btn admin-btn-outline admin-btn-sm">
+                        {{ 'Mark Unread' if enquiry.is_read else 'Mark Read' }}
+                    </button>
+                </form>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.enquiry_delete', enquiry_id=enquiry.id) }}"
+                      data-confirm="Delete this enquiry from {{ enquiry.name }}?">
+                    <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm">Delete</button>
+                </form>
+            </div>
+
+            <div class="data-row-full enquiry-message" id="msg-{{ enquiry.id }}" style="display:none;">{{ enquiry.message }}</div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">📭</div>
+            No enquiries yet. New website enquiries will show up here instantly.
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

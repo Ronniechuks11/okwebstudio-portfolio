@@ -1,0 +1,67 @@
+{% extends "admin/base.html" %}
+
+{% set current_rating = testimonial.rating if testimonial else 5 %}
+
+{% block title %}{{ 'Edit Testimonial' if mode == 'edit' else 'Add Testimonial' }} | OKWebStudio Admin{% endblock %}
+
+{% block content %}
+
+<div class="admin-page-header">
+    <div>
+        <span class="admin-eyebrow">Testimonials</span>
+        <h1>{{ 'Edit Testimonial' if mode == 'edit' else 'Add New Testimonial' }}</h1>
+        <p>This will appear in the "What Our Clients Say" section.</p>
+    </div>
+    <a href="{{ url_for('admin.testimonials_list') }}" class="admin-btn admin-btn-outline">← Back to List</a>
+</div>
+
+<div class="admin-panel">
+
+    <form class="admin-form" method="POST">
+
+        <div class="form-row">
+            <div class="form-group">
+                <label class="form-label" for="client_name">Client Name</label>
+                <input class="admin-input" type="text" id="client_name" name="client_name" required
+                       placeholder="e.g. Nova Digital"
+                       value="{{ testimonial.client_name if testimonial else '' }}">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="client_role">Client Role / Business Type</label>
+                <input class="admin-input" type="text" id="client_role" name="client_role"
+                       placeholder="e.g. Marketing Agency"
+                       value="{{ testimonial.client_role if testimonial else '' }}">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="quote">Testimonial Text</label>
+            <textarea class="admin-textarea" id="quote" name="quote" required
+                      placeholder="What did the client say about working with OKWebStudio?">{{ testimonial.quote if testimonial else '' }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label">Rating</label>
+            <input type="hidden" id="ratingInput" name="rating" value="{{ current_rating }}">
+            <div class="star-picker" id="starPicker">
+                <span class="star" data-value="1">★</span>
+                <span class="star" data-value="2">★</span>
+                <span class="star" data-value="3">★</span>
+                <span class="star" data-value="4">★</span>
+                <span class="star" data-value="5">★</span>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="admin-btn admin-btn-primary">
+                {{ 'Save Changes' if mode == 'edit' else '+ Add Testimonial' }}
+            </button>
+            <a href="{{ url_for('admin.testimonials_list') }}" class="admin-btn admin-btn-outline">Cancel</a>
+        </div>
+
+    </form>
+
+</div>
+
+{% endblock %}

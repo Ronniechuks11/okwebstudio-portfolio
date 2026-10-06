@@ -1,0 +1,87 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Featured Projects | OKWebStudio Admin{% endblock %}
+
+{% block content %}
+
+<div class="admin-page-header">
+    <div>
+        <span class="admin-eyebrow">Manage</span>
+        <h1>Featured Projects</h1>
+        <p>
+            These power both the homepage (first {{ 4 }} marked "Featured")
+            and the public "View All Projects" page.
+        </p>
+    </div>
+    <a href="{{ url_for('admin.project_new') }}" class="admin-btn admin-btn-primary">+ Add Project</a>
+</div>
+
+<div class="admin-panel">
+
+    {% if projects %}
+        {% for project in projects %}
+        <div class="data-row">
+
+            <div class="data-row-media">
+                {% if project.image_filename %}
+                <img src="{{ url_for('static', filename='images/projects/' + project.image_filename) }}" alt="{{ project.title }}">
+                {% else %}
+                <span>{{ project.placeholder_icon or '🖥️' }}</span>
+                {% endif %}
+            </div>
+
+            <div class="data-row-info">
+                <h4>{{ project.title }}</h4>
+                <p>{{ project.category }} — {{ project.description }}</p>
+            </div>
+
+            <div class="data-row-badges">
+                {% if project.featured %}
+                    <span class="badge badge-accent">★ Featured</span>
+                {% else %}
+                    <span class="badge badge-muted">Not Featured</span>
+                {% endif %}
+
+                {% if project.link_mode == 'dual' %}
+                    <span class="badge badge-muted">Admin + Visit links</span>
+                {% elif project.link_mode == 'single' %}
+                    <span class="badge badge-muted">Single link</span>
+                {% else %}
+                    <span class="badge badge-muted">Coming soon</span>
+                {% endif %}
+            </div>
+
+            <div class="data-row-order">
+                <form class="inline-form" method="POST" action="{{ url_for('admin.project_move', project_id=project.id, direction='up') }}">
+                    <button type="submit" class="icon-btn" title="Move up" aria-label="Move up">↑</button>
+                </form>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.project_move', project_id=project.id, direction='down') }}">
+                    <button type="submit" class="icon-btn" title="Move down" aria-label="Move down">↓</button>
+                </form>
+            </div>
+
+            <div class="data-row-actions">
+                <form class="inline-form" method="POST" action="{{ url_for('admin.project_toggle_featured', project_id=project.id) }}">
+                    <button type="submit" class="admin-btn admin-btn-outline admin-btn-sm">
+                        {{ 'Unfeature' if project.featured else 'Feature' }}
+                    </button>
+                </form>
+                <a href="{{ url_for('admin.project_edit', project_id=project.id) }}" class="admin-btn admin-btn-outline admin-btn-sm">Edit</a>
+                <form class="inline-form" method="POST" action="{{ url_for('admin.project_delete', project_id=project.id) }}"
+                      data-confirm="Delete &quot;{{ project.title }}&quot;? This can't be undone.">
+                    <button type="submit" class="admin-btn admin-btn-danger admin-btn-sm">Delete</button>
+                </form>
+            </div>
+
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="empty-state">
+            <div class="empty-icon">🗂️</div>
+            No projects yet. Add your first one to get started.
+        </div>
+    {% endif %}
+
+</div>
+
+{% endblock %}

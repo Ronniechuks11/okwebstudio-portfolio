@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>{% block title %}Admin | OKWebStudio{% endblock %}</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+</head>
+<body class="admin-body">
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<div class="admin-shell">
+
+    <aside class="admin-sidebar" id="adminSidebar">
+
+        <div class="admin-sidebar-brand">
+            <div class="logo">OK<span>Studio</span></div>
+            <button class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close menu" type="button">&times;</button>
+        </div>
+
+        <nav class="admin-nav">
+
+            <a href="{{ url_for('admin.dashboard') }}"
+               class="admin-nav-link {{ 'active' if request.endpoint == 'admin.dashboard' else '' }}">
+                <span class="nav-icon">📊</span> Dashboard
+            </a>
+
+            <a href="{{ url_for('admin.projects_list') }}"
+               class="admin-nav-link {{ 'active' if request.endpoint and request.endpoint.startswith('admin.project') else '' }}">
+                <span class="nav-icon">🗂️</span> Featured Projects
+            </a>
+
+            <a href="{{ url_for('admin.testimonials_list') }}"
+               class="admin-nav-link {{ 'active' if request.endpoint and request.endpoint.startswith('admin.testimonial') else '' }}">
+                <span class="nav-icon">💬</span> Testimonials
+            </a>
+
+            <a href="{{ url_for('admin.enquiries_list') }}"
+               class="admin-nav-link {{ 'active' if request.endpoint and request.endpoint.startswith('admin.enquir') else '' }}">
+                <span class="nav-icon">📩</span> Enquiries
+                {% if sidebar_unread_count %}
+                <span class="nav-badge">{{ sidebar_unread_count }}</span>
+                {% endif %}
+            </a>
+
+            <div class="admin-nav-divider"></div>
+
+            <a href="{{ url_for('home') }}" target="_blank" rel="noopener noreferrer" class="admin-nav-link">
+                <span class="nav-icon">🌐</span> View Live Site
+            </a>
+
+        </nav>
+
+        <div class="admin-sidebar-footer">
+            <a href="{{ url_for('admin.logout') }}" class="admin-btn admin-btn-outline" style="width:100%;">
+                🚪 Log Out
+            </a>
+        </div>
+
+    </aside>
+
+    <div class="admin-topbar">
+        <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Open menu" type="button">☰</button>
+        <div class="logo">OKWebStudio Admin</div>
+        <div style="width:40px;"></div>
+    </div>
+
+    <main class="admin-main">
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        <div class="admin-flashes">
+            {% for category, message in messages %}
+            <div class="admin-flash admin-flash-{{ 'error' if category == 'error' else 'success' }}">
+                {{ message }}
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% block scripts %}{% endblock %}
+
+</body>
+</html>
